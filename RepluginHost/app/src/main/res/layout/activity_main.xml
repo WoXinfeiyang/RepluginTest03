@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="拷贝插件apk文件到SD卡中"
+        android:textAllCaps="false"
         android:layout_centerInParent="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,8 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="安装插件"
+        android:textAllCaps="false"
         android:layout_centerInParent="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn01"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/btn03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动插件Activity"
+        android:textAllCaps="false"
+        android:layout_centerInParent="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn02"
         app:layout_constraintRight_toRightOf="parent"/>
 </android.support.constraint.ConstraintLayout >

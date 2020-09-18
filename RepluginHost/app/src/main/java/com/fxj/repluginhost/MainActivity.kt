@@ -19,12 +19,15 @@ class MainActivity : Activity(), View.OnClickListener {
         val PLUGIN_FILE_NAME="com.fxj.Plugin.apk"
     }
 
+    var pi: PluginInfo?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.btn01).setOnClickListener(this)
         findViewById<Button>(R.id.btn02).setOnClickListener(this)
+        findViewById<Button>(R.id.btn03).setOnClickListener(this)
 
         checkPermission()
     }
@@ -71,9 +74,16 @@ class MainActivity : Activity(), View.OnClickListener {
             }
             R.id.btn02 -> {
                 var pluginApkPath:String="/sdcard/RepluginHost/com.fxj.Plugin.apk"
-                var pi: PluginInfo?= RePlugin.install(pluginApkPath)
+                pi= RePlugin.install(pluginApkPath)
                 if(pi!=null){
                     RePlugin.preload(pi)
+                }
+            }
+
+            R.id.btn03->{
+                if(pi!=null){
+                    RePlugin.startActivity(this@MainActivity, RePlugin.createIntent("com.fxj.Plugin",
+                        "com.fxj.Plugin.PluginMainActivity"));
                 }
             }
         }
