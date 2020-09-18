@@ -22,6 +22,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                //这里修改apk文件名
+                outputFileName = "${applicationId}_v${defaultConfig.versionName}_${buildType.name}.apk"
+            }
+    }
 }
 
 apply plugin: 'replugin-host-gradle'
