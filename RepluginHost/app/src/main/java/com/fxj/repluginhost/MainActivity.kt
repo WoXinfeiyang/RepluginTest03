@@ -8,6 +8,8 @@ import android.support.v4.app.ActivityCompat
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.qihoo360.replugin.RePlugin
+import com.qihoo360.replugin.model.PluginInfo
 
 
 class MainActivity : Activity(), View.OnClickListener {
@@ -68,7 +70,11 @@ class MainActivity : Activity(), View.OnClickListener {
                 }.start()
             }
             R.id.btn02 -> {
-
+                var pluginApkPath:String="/sdcard/RepluginHost/com.fxj.Plugin.apk"
+                var pi: PluginInfo?= RePlugin.install(pluginApkPath)
+                if(pi!=null){
+                    RePlugin.preload(pi)
+                }
             }
         }
     }
