@@ -1,0 +1,3 @@
+include ':app'
+include ':replugin-host-lib'
+rootProject.name = "RepluginHost"
