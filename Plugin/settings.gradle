@@ -1,0 +1,3 @@
+include ':app'
+include ':replugin-plugin-lib'
+rootProject.name = "Plugin"
