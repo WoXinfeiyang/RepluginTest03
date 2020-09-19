@@ -80,6 +80,7 @@ class MainActivity : Activity(), View.OnClickListener {
                 if(pi!=null){
                     RePlugin.preload(pi)
                 }
+                Log.d(TAG,"安装插件按钮已被点击,install result PluginInfo=${pi}")
             }
 
             R.id.btn03->{
