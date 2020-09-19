@@ -87,6 +87,7 @@ class BaseApplication: Application() {
     override fun onCreate() {
         super.onCreate()
         RePlugin.App.onCreate()
+        Log.d(TAG,"##onCreate##p-n型插件安装的路径=${RePlugin.getConfig().pnInstallDir}")
     }
 
     override fun onLowMemory() {
