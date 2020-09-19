@@ -94,6 +94,9 @@ public class PluginManager {
         sPluginProcessIndex = evalPluginProcess(IPC.getCurrentProcessName());
     }
 
+    /**
+     * 根据传入的进程名称返回对应的进程Id
+     * */
     static final int evalPluginProcess(String name) {
         int index = IPluginManager.PROCESS_AUTO;
 
