@@ -14,11 +14,13 @@ import com.qihoo360.replugin.model.PluginInfo
 class BaseApplication: Application() {
 
     companion object{
-        val TAG=BaseApplication::class.java.simpleName
+        val TAG=BaseApplication::class.java.simpleName+"_fxj"
     }
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
+
+        Log.d(TAG,"##attachBaseContext##ContextWrapper.getBaseContext=${baseContext}")
 
         var rePluginConfig=RePluginConfig()
 
