@@ -26,6 +26,9 @@ class BaseApplication: Application() {
 
         rePluginConfig.setPrintDetailLog(BuildConfig.DEBUG)
 
+        /*在Art上对首次加载插件速度做优化*/
+        rePluginConfig.setOptimizeArtLoadDex(true)
+
         rePluginConfig.setEventCallbacks(object: RePluginEventCallbacks(base) {
             val TAG:String="RPEventCallbacks_fxj"
 
