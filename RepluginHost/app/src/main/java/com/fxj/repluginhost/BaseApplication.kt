@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.util.Log
 import com.qihoo360.replugin.RePlugin
+import com.qihoo360.replugin.RePluginCallbacks
 import com.qihoo360.replugin.RePluginConfig
 import com.qihoo360.replugin.RePluginEventCallbacks
 import com.qihoo360.replugin.model.PluginInfo
@@ -60,6 +61,23 @@ class BaseApplication: Application() {
             }
         })
 
+        rePluginConfig.setCallbacks(object : RePluginCallbacks(base) {
+            val TAG:String="RePluginCallbacks_fxj"
+
+            override fun onPluginNotExistsForActivity(context: Context?, plugin: String?, intent: Intent?, process: Int): Boolean {
+
+                Log.d(TAG,"##onPluginNotExistsForActivity##" +
+                        "当要打开的Activity所对应的插件不存在时触发该方法,Context=${context}," +
+                        "plugin=${plugin},intent=${intent},process=${process}")
+
+                return super.onPluginNotExistsForActivity(context, plugin, intent, process)
+            }
+
+            override fun onLoadLargePluginForActivity(context: Context?, plugin: String?, intent: Intent?, process: Int): Boolean {
+                Log.d(TAG,"##onLoadLargePluginForActivity##context=${context},plugin=${plugin},intent=${intent},process=${process}")
+                return super.onLoadLargePluginForActivity(context, plugin, intent, process)
+            }
+        })
 
         RePlugin.App.attachBaseContext(this,rePluginConfig)
     }
