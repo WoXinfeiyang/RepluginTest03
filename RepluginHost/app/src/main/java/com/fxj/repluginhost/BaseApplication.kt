@@ -18,7 +18,14 @@ class BaseApplication: Application() {
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
+
         var rePluginConfig=RePluginConfig()
+
+        /*当插件没有指定类时，是否允许使用宿主的类？若为true，则当插件内没有指定类时，将默认使用宿主的。*/
+        rePluginConfig.setUseHostClassIfNotFound(true)
+
+        rePluginConfig.setPrintDetailLog(BuildConfig.DEBUG)
+
         rePluginConfig.setEventCallbacks(object: RePluginEventCallbacks(base) {
             val TAG:String="RPEventCallbacks_fxj"
 
@@ -49,6 +56,8 @@ class BaseApplication: Application() {
                 Log.d(TAG,"##onStartActivityCompleted##plugin=${plugin},activity=${activity},result=${result}")
             }
         })
+
+
         RePlugin.App.attachBaseContext(this,rePluginConfig)
     }
 
