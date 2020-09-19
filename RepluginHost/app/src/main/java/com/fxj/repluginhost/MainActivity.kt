@@ -14,9 +14,10 @@ import com.qihoo360.replugin.model.PluginInfo
 
 class MainActivity : Activity(), View.OnClickListener {
     companion object{
-        val TAG:String=MainActivity::class.java.simpleName
+        val TAG:String=MainActivity::class.java.simpleName+"_fxj"
         val DIR_PATH="RepluginHost"
         val PLUGIN_FILE_NAME="com.fxj.Plugin.apk"
+        val PLUGIN_NAME="com.fxj.Plugin.apk"
     }
 
     var pi: PluginInfo?=null
@@ -28,6 +29,7 @@ class MainActivity : Activity(), View.OnClickListener {
         findViewById<Button>(R.id.btn01).setOnClickListener(this)
         findViewById<Button>(R.id.btn02).setOnClickListener(this)
         findViewById<Button>(R.id.btn03).setOnClickListener(this)
+        findViewById<Button>(R.id.btn04).setOnClickListener(this)
 
         checkPermission()
     }
@@ -82,9 +84,15 @@ class MainActivity : Activity(), View.OnClickListener {
 
             R.id.btn03->{
                 if(pi!=null){
-                    RePlugin.startActivity(this@MainActivity, RePlugin.createIntent("com.fxj.Plugin",
+                    RePlugin.startActivity(this@MainActivity, RePlugin.createIntent(
+                        PLUGIN_NAME,
                         "com.fxj.Plugin.PluginMainActivity"));
                 }
+            }
+
+            R.id.btn04->{
+                var uninstallResult= RePlugin.uninstall(PLUGIN_NAME)
+                Log.d(TAG,"卸载插件按钮被点击了,卸载结果为:${uninstallResult}")
             }
         }
     }
