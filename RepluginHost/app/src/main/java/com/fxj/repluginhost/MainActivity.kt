@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.qihoo360.loader2.DumpUtils
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.model.PluginInfo
 
@@ -30,7 +31,7 @@ class MainActivity : Activity(), View.OnClickListener {
         findViewById<Button>(R.id.btn02).setOnClickListener(this)
         findViewById<Button>(R.id.btn03).setOnClickListener(this)
         findViewById<Button>(R.id.btn04).setOnClickListener(this)
-
+        findViewById<Button>(R.id.btn05).setOnClickListener(this)
         checkPermission()
     }
 
@@ -94,6 +95,9 @@ class MainActivity : Activity(), View.OnClickListener {
             R.id.btn04->{
                 var uninstallResult= RePlugin.uninstall(PLUGIN_NAME)
                 Log.d(TAG,"卸载插件按钮被点击了,卸载结果为:${uninstallResult}")
+            }
+            R.id.btn05->{
+                DumpUtils.dump(null,null,null)
             }
         }
     }
