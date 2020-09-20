@@ -29,6 +29,7 @@ import android.os.Parcelable;
 import android.os.RemoteException;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.qihoo360.i.Factory;
 import com.qihoo360.i.IModule;
@@ -668,6 +669,7 @@ class PmBase {
      * @return
      */
     final Class<?> loadClass(String className, boolean resolve) {
+        Log.d(TAG+"_fxj","loadClass: className="+className+",resolve="+resolve);
         // 加载Service中介坑位
         if (className.startsWith(PluginPitService.class.getName())) {
             if (LOG) {
@@ -679,6 +681,7 @@ class PmBase {
         //
         if (mContainerActivities.contains(className)) {
             Class<?> c = mClient.resolveActivityClass(className);
+            Log.d(TAG+"_fxj","loadClass: mClient.resolveActivityClass("+className+")="+c);
             if (c != null) {
                 return c;
             }
@@ -693,6 +696,7 @@ class PmBase {
         //
         if (mContainerServices.contains(className)) {
             Class<?> c = loadServiceClass(className);
+            Log.d(TAG+"_fxj","loadClass: loadServiceClass("+className+")="+c);
             if (c != null) {
                 return c;
             }
@@ -707,6 +711,7 @@ class PmBase {
         //
         if (mContainerProviders.contains(className)) {
             Class<?> c = loadProviderClass(className);
+            Log.d(TAG+"_fxj","loadClass: loadProviderClass("+className+")="+c);
             if (c != null) {
                 return c;
             }
