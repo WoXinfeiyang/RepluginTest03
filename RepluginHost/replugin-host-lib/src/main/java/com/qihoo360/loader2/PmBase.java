@@ -480,7 +480,12 @@ class PmBase {
     final void callAttach() {
         //
         mClassLoader = PmBase.class.getClassLoader();
-        Log.d(TAG+"_fxj","##callAttach()##PmBase.mClassLoader="+mClassLoader.getClass().getCanonicalName()+",mDefaultPluginName="+mDefaultPluginName+",CurrentProcessName="+IPC.getCurrentProcessName()+",CurrentProcessId="+IPC.getCurrentProcessId());
+
+        String logMsg01="##callAttach()##PmBase.mClassLoader="+mClassLoader.getClass().getCanonicalName()+",mDefaultPluginName="+mDefaultPluginName
+                +",CurrentProcessName="+IPC.getCurrentProcessName()+",CurrentProcessId="+IPC.getCurrentProcessId()
+                +",PluginManager.getPluginProcessIndex="+PluginManager.getPluginProcessIndex();
+        Log.d(TAG+"_fxj",logMsg01);
+
         // 挂载
         for (Plugin p : mPlugins.values()) {
             p.attach(mContext, mClassLoader, mLocal);
