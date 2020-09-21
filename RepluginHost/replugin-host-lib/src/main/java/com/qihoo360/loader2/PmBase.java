@@ -480,7 +480,7 @@ class PmBase {
     final void callAttach() {
         //
         mClassLoader = PmBase.class.getClassLoader();
-
+        Log.d(TAG+"_fxj","##callAttach()##PmBase.mClassLoader="+mClassLoader.getClass().getCanonicalName()+",mDefaultPluginName="+mDefaultPluginName);
         // 挂载
         for (Plugin p : mPlugins.values()) {
             p.attach(mContext, mClassLoader, mLocal);
@@ -493,6 +493,9 @@ class PmBase {
                 Plugin p = mPlugins.get(mDefaultPluginName);
                 if (p != null) {
                     boolean rc = p.load(Plugin.LOAD_APP, true);
+
+                    Log.d(TAG+"_fxj","##callAttach()##loade default plugin result="+rc+",Plugin="+p);
+
                     if (!rc) {
                         if (LOG) {
                             LogDebug.d(PLUGIN_TAG, "failed to load default plugin=" + mDefaultPluginName);
