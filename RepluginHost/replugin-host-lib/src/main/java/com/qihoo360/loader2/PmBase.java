@@ -190,6 +190,7 @@ class PmBase {
                 if (info != null) {
                     switch (action) {
                         case ACTION_NEW_PLUGIN:
+                            Log.d(TAG+"_fxj","##PmBase.mBroadcastReceiver.onReceive##收到ACTION_NEW_PLUGIN广播,PluginInfo="+info);
                             // 非常驻进程上下文
                             newPluginFound(info, intent.getBooleanExtra(RePluginConstants.KEY_PERSIST_NEED_RESTART, false));
                             break;
