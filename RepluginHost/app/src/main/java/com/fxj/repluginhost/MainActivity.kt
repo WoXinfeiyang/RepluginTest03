@@ -18,7 +18,7 @@ class MainActivity : Activity(), View.OnClickListener {
         val TAG:String=MainActivity::class.java.simpleName+"_fxj"
         val DIR_PATH="RepluginHost"
         val PLUGIN_FILE_NAME="com.fxj.Plugin.apk"
-        val PLUGIN_NAME="com.fxj.Plugin.apk"
+        val PLUGIN_NAME="com.fxj.Plugin"
     }
 
     var pi: PluginInfo?=null
