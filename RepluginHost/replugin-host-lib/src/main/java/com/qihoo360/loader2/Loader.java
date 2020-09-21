@@ -174,6 +174,7 @@ class Loader {
             PackageManager pm = mContext.getPackageManager();
 
             mPackageInfo = Plugin.queryCachedPackageInfo(mPath);
+            Log.d("Loader_fxj","##loadDex##ClassLoader parent="+parent+",load="+load+",mPackageInfo="+mPackageInfo+",mPath="+mPath);
             if (mPackageInfo == null) {
                 // PackageInfo
                 mPackageInfo = pm.getPackageArchiveInfo(mPath,
