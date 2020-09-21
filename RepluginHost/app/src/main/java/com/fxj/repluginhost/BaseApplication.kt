@@ -77,7 +77,10 @@ class BaseApplication: Application() {
                         "当要打开的Activity所对应的插件不存在时触发该方法,Context=${context}," +
                         "plugin=${plugin},intent=${intent},process=${process}")
 
-                return super.onPluginNotExistsForActivity(context, plugin, intent, process)
+                var pluginApkPath:String="/sdcard/RepluginHost/com.fxj.Plugin.apk"
+                var installResult:PluginInfo?= RePlugin.install(pluginApkPath)
+                Log.d(TAG,"##onPluginNotExistsForActivity##再次安装后安装结果PluginInfo=${installResult}")
+                return installResult!=null
             }
 
             override fun onLoadLargePluginForActivity(context: Context?, plugin: String?, intent: Intent?, process: Int): Boolean {
