@@ -172,6 +172,8 @@ public class FileUtils {
                     Environment.getExternalStorageDirectory().getAbsolutePath()+destDir
                     :Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+destDir;
 
+            makeDir(destDirPath);
+
             File destFile=new File(destDirPath,destFileName);
 
             if(!destFile.exists()){
