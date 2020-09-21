@@ -5,9 +5,11 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.qihoo360.loader2.DumpUtils
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.model.PluginInfo
@@ -24,6 +26,8 @@ class MainActivity : Activity(), View.OnClickListener {
     }
 
     var pi: PluginInfo?=null
+
+    var apkPluginFilePath:String?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,18 +76,22 @@ class MainActivity : Activity(), View.OnClickListener {
             R.id.btn01 -> {
                 Thread{
                     run{
-                        Log.d(TAG,"currentThread name=${Thread.currentThread().name}")
-                        FileUtils.coyAssetsFileToDestDir(this, PLUGIN_FILE_NAME, DIR_PATH, PLUGIN_FILE_NAME)
+                        apkPluginFilePath=FileUtils.coyAssetsFileToDestDir(this, PLUGIN_FILE_NAME, DIR_PATH, PLUGIN_FILE_NAME)
+                        Log.d(TAG,"复制插件按钮被点击,currentThread name=${Thread.currentThread().name},apkPluginFilePath=${apkPluginFilePath}")
                     }
                 }.start()
             }
             R.id.btn02 -> {
-                var pluginApkPath:String="/sdcard/RepluginHost/com.fxj.Plugin.apk"
-                pi= RePlugin.install(pluginApkPath)
-                if(pi!=null){
-                    RePlugin.preload(pi)
+                if(!TextUtils.isEmpty(this.apkPluginFilePath)){
+                    pi= RePlugin.install(apkPluginFilePath)
+                    if(pi!=null){
+                        RePlugin.preload(pi)
+                    }
+                }else{
+                    var msg="请先将assets目录下的apk插件文件复制到SD卡${DIR_PATH}文件夹下,然后再安装apk插件!"
+                    Toast.makeText(this@MainActivity,msg,Toast.LENGTH_LONG).show()
                 }
-                Log.d(TAG,"安装插件按钮已被点击,install result PluginInfo=${pi}")
+                Log.d(TAG,"安装插件按钮已被点击,install result PluginInfo=${pi},apkPluginFilePath=${apkPluginFilePath}")
             }
 
             R.id.btn03->{
