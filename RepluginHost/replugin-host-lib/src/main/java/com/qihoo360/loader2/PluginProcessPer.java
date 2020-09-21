@@ -115,7 +115,7 @@ class PluginProcessPer extends IPluginClient.Stub {
 
         ClassLoader cl = p.getClassLoader();
         if (LOG) {
-            LogDebug.d(PLUGIN_TAG, "PACM: loadActivityClass, plugin activity loader: in=" + container + " activity=" + activity);
+            LogDebug.d(PLUGIN_TAG, "PACM: loadActivityClass, plugin activity loader: in=" + container + " activity=" + activity+" ClassLoader="+cl);
         }
         Class<?> c = null;
         try {
