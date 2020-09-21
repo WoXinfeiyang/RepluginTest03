@@ -1120,6 +1120,7 @@ class PmBase {
             }
             return null;
         }
+        Log.d(TAG+"_fxj","##loadPlugin##Plugin.getClassLoader()="+p.getClassLoader().getClass().getCanonicalName());
         return p;
     }
 
