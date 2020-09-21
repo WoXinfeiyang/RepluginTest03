@@ -18,6 +18,8 @@ class MainActivity : Activity(), View.OnClickListener {
         val TAG:String=MainActivity::class.java.simpleName+"_fxj"
         val DIR_PATH="RepluginHost"
         val PLUGIN_FILE_NAME="com.fxj.Plugin.apk"
+
+        /**插件名称,"纯Apk插件"的插件名为插件的PackageName*/
         val PLUGIN_NAME="com.fxj.Plugin"
     }
 
