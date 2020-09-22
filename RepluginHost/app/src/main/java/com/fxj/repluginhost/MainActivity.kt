@@ -14,6 +14,7 @@ import com.qihoo360.loader2.DumpUtils
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.model.PluginInfo
 import com.qihoo360.replugin.packages.PluginRunningList
+import java.io.File
 
 
 class MainActivity : Activity(), View.OnClickListener {
@@ -87,9 +88,16 @@ class MainActivity : Activity(), View.OnClickListener {
             }
             R.id.btn02 -> {
                 if(!TextUtils.isEmpty(this.apkPluginFilePath)){
-                    pi= RePlugin.install(apkPluginFilePath)
-                    if(pi!=null){
-                        RePlugin.preload(pi)
+                    if(File(this.apkPluginFilePath).exists()){
+                        var apkFileNotExistMsg="SD卡上apk插件文件存在,可以安装apk插件!"
+                        Toast.makeText(this@MainActivity,apkFileNotExistMsg,Toast.LENGTH_SHORT).show()
+                        pi= RePlugin.install(apkPluginFilePath)
+                        if(pi!=null){
+                            RePlugin.preload(pi)
+                        }
+                    }else{
+                        var apkFileNotExistMsg="SD卡上apk插件文件不存在!请先将assets目录下的apk插件文件复制到SD卡${DIR_PATH}文件夹下,然后再安装apk插件!"
+                        Toast.makeText(this@MainActivity,apkFileNotExistMsg,Toast.LENGTH_SHORT).show()
                     }
                 }else{
                     var msg="请先将assets目录下的apk插件文件复制到SD卡${DIR_PATH}文件夹下,然后再安装apk插件!"
