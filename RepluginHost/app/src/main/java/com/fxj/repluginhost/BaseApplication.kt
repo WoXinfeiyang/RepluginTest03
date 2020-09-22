@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.util.Log
+import android.widget.Toast
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.RePluginCallbacks
 import com.qihoo360.replugin.RePluginConfig
@@ -72,10 +73,12 @@ class BaseApplication: Application() {
             val TAG:String="RePluginCallbacks_fxj"
 
             override fun onPluginNotExistsForActivity(context: Context?, plugin: String?, intent: Intent?, process: Int): Boolean {
-
-                Log.d(TAG,"##onPluginNotExistsForActivity##" +
+                var msg="##onPluginNotExistsForActivity##" +
                         "当要打开的Activity所对应的插件不存在时触发该方法,Context=${context}," +
-                        "plugin=${plugin},intent=${intent},process=${process}")
+                        "plugin=${plugin},intent=${intent},process=${process}"
+
+                Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
+                Log.d(TAG,msg)
 
                 return super.onPluginNotExistsForActivity(context, plugin, intent, process)
             }
