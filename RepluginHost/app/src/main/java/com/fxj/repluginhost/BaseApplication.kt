@@ -35,7 +35,7 @@ class BaseApplication: Application() {
         /*安装纯APK插件时是否将文件“移动”到app_p_a目录下,
         true--移动,apk插件源文件将不再保留;
         false--复制，将apk插件源文件复制到app_p_a目录下,apk插件源文件依然保留*/
-        rePluginConfig.setMoveFileWhenInstalling(false)
+        rePluginConfig.setMoveFileWhenInstalling(true)
 
         rePluginConfig.setEventCallbacks(object: RePluginEventCallbacks(base) {
             val TAG:String="RPEventCallbacks_fxj"
