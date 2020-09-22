@@ -2,6 +2,7 @@ package com.fxj.repluginhost
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -43,12 +44,16 @@ class SecondActivity : Activity(), View.OnClickListener {
         when(v?.id){
             R.id.seconde_act_btn01->{
                 if(pluginContext!=null){
-                    var drawable= pluginContext?.getResources()?.getDrawable(
-                        pluginContext?.getResources()!!
+                    var pluginResource: Resources? =pluginContext?.getResources()
+
+                    var drawable= pluginResource?.getDrawable(
+                        pluginResource!!
                             .getIdentifier("mickey_mouse_in_plugin", "drawable","com.fxj.Plugin"))
+
                     if(drawable!=null&&image!=null){
                         image?.setImageDrawable(drawable)
                     }
+                    Log.d(TAG,"显示插件中的图片按钮被点击了!pluginResource=${pluginResource}")
                 }
             }
         }
