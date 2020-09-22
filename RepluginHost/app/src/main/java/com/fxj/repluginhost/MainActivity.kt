@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.qihoo360.loader2.DumpUtils
 import com.qihoo360.replugin.RePlugin
 import com.qihoo360.replugin.model.PluginInfo
+import com.qihoo360.replugin.packages.PluginRunningList
 
 
 class MainActivity : Activity(), View.OnClickListener {
@@ -38,6 +39,9 @@ class MainActivity : Activity(), View.OnClickListener {
         findViewById<Button>(R.id.btn03).setOnClickListener(this)
         findViewById<Button>(R.id.btn04).setOnClickListener(this)
         findViewById<Button>(R.id.btn05).setOnClickListener(this)
+        findViewById<Button>(R.id.btn06).setOnClickListener(this)
+        findViewById<Button>(R.id.btn07).setOnClickListener(this)
+
         checkPermission()
     }
 
@@ -108,6 +112,23 @@ class MainActivity : Activity(), View.OnClickListener {
             }
             R.id.btn05->{
                 DumpUtils.dump(null,null,null)
+            }
+            R.id.btn06->{
+                var allPluginInfoList:MutableList<PluginInfo>?= RePlugin.getPluginInfoList()
+
+                var allPluginInfoMsg="获取所有插件信息按钮被点击了,所有插件数量=${allPluginInfoList?.size},所有插件信息allPluginInfoList=${allPluginInfoList}"
+
+                Log.d(TAG,allPluginInfoMsg)
+
+                Toast.makeText(this@MainActivity,allPluginInfoMsg,Toast.LENGTH_LONG).show()
+            }
+            R.id.btn07->{
+                var pluginRunningList: PluginRunningList? = RePlugin.getRunningPlugins()
+                var runningPluginsMsg="获取正在运行插件信息按钮被点击了,pluginRunningList=${pluginRunningList}"
+
+                Log.d(TAG,runningPluginsMsg)
+
+                Toast.makeText(this@MainActivity,runningPluginsMsg,Toast.LENGTH_LONG).show()
             }
         }
     }
