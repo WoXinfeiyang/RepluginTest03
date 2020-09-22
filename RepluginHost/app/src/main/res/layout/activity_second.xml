@@ -14,4 +14,23 @@
         app:layout_constraintRight_toRightOf="parent"
         android:text="Host SecondActivity"
         android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/seconde_act_btn01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/seconde_act_tv01"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="展示插件中的图片"
+        android:textAllCaps="false"/>
+    <ImageView
+        android:id="@+id/seconde_act_iv"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        app:layout_constraintTop_toBottomOf="@id/seconde_act_btn01"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:scaleType="centerInside"
+        />
 </android.support.constraint.ConstraintLayout>
