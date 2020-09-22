@@ -2,6 +2,7 @@ package com.fxj.repluginhost
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
@@ -42,6 +43,7 @@ class MainActivity : Activity(), View.OnClickListener {
         findViewById<Button>(R.id.btn05).setOnClickListener(this)
         findViewById<Button>(R.id.btn06).setOnClickListener(this)
         findViewById<Button>(R.id.btn07).setOnClickListener(this)
+        findViewById<Button>(R.id.btn08).setOnClickListener(this)
 
         checkPermission()
     }
@@ -137,6 +139,12 @@ class MainActivity : Activity(), View.OnClickListener {
                 Log.d(TAG,runningPluginsMsg)
 
                 Toast.makeText(this@MainActivity,runningPluginsMsg,Toast.LENGTH_LONG).show()
+            }
+
+            R.id.btn08->{
+                var gotoSecondeActivityIntent: Intent =Intent()
+                gotoSecondeActivityIntent.setClass(this@MainActivity,SecondActivity::class.java)
+                startActivity(gotoSecondeActivityIntent)
             }
         }
     }
