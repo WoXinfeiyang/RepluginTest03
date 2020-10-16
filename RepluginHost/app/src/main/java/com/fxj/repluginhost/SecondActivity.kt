@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import com.google.gson.Gson
 import com.qihoo360.replugin.RePlugin
 
 class SecondActivity : Activity(), View.OnClickListener {
@@ -33,29 +34,46 @@ class SecondActivity : Activity(), View.OnClickListener {
 
         image=findViewById(R.id.seconde_act_iv)
 
+        findViewById<Button>(R.id.seconde_act_btn02).setOnClickListener(this)
+
         pluginContext=RePlugin.fetchContext(PLUGIN_NAME)
         pluginClassLoader=RePlugin.fetchClassLoader(PLUGIN_NAME)
 
-        Log.d(TAG, "##onCreate##pluginContext canonicalName=${pluginContext?.javaClass?.canonicalName},pluginClassLoader canonicalName=${pluginClassLoader?.javaClass?.canonicalName}")
+        Log.d(
+            TAG,
+            "##onCreate##pluginContext canonicalName=${pluginContext?.javaClass?.canonicalName},pluginClassLoader canonicalName=${pluginClassLoader?.javaClass?.canonicalName}"
+        )
 
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.seconde_act_btn01->{
-                if(pluginContext!=null){
-                    var pluginResource: Resources? =pluginContext?.getResources()
+            R.id.seconde_act_btn01 -> {
+                if (pluginContext != null) {
+                    var pluginResource: Resources? = pluginContext?.getResources()
 
-                    var drawable= pluginResource?.getDrawable(
+                    var drawable = pluginResource?.getDrawable(
                         pluginResource!!
-                            .getIdentifier("mickey_mouse_in_plugin", "drawable","com.fxj.Plugin"))
+                            .getIdentifier("mickey_mouse_in_plugin", "drawable", "com.fxj.Plugin")
+                    )
 
-                    if(drawable!=null&&image!=null){
+                    if (drawable != null && image != null) {
                         image?.setImageDrawable(drawable)
                     }
-                    Log.d(TAG,"显示插件中的图片按钮被点击了!pluginResource=${pluginResource}")
+                    Log.d(TAG, "显示插件中的图片按钮被点击了!pluginResource=${pluginResource}")
                 }
             }
+
+            R.id.seconde_act_btn02 -> {
+                jsonStrToBean()
+            }
         }
+    }
+
+    private fun jsonStrToBean(){
+        var jsonStr:String="{\"name\":\"ZhangSan\",\"age\":\"26\"}"
+        val gson = Gson()
+        val person: Person = gson.fromJson(jsonStr, Person::class.java)
+        Log.d(TAG, "##jsonStrToBean##jsonStr=${jsonStr},person=${person}")
     }
 }

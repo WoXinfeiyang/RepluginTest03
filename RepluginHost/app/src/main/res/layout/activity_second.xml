@@ -33,4 +33,13 @@
         app:layout_constraintRight_toRightOf="parent"
         android:scaleType="centerInside"
         />
+    <Button
+        android:id="@+id/seconde_act_btn02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/seconde_act_iv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="使用GSON将json数据转换成bean对象"
+        android:textAllCaps="false"/>
 </android.support.constraint.ConstraintLayout>
