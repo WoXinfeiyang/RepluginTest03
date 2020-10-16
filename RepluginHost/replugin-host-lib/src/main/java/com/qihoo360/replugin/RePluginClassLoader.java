@@ -17,6 +17,7 @@
 package com.qihoo360.replugin;
 
 import android.os.Build;
+import android.util.Log;
 
 import com.qihoo360.replugin.utils.ReflectUtils;
 import com.qihoo360.loader.utils.StringUtils;
@@ -145,6 +146,7 @@ public class RePluginClassLoader extends PathClassLoader {
         //
         Class<?> c = null;
         c = PMF.loadClass(className, resolve);
+        Log.d(TAG,"loadClass: className="+className+",resolve="+resolve+",PMF.loadClass="+c);
         if (c != null) {
             return c;
         }
