@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import com.qihoo360.replugin.RePlugin
 
 
@@ -28,6 +29,7 @@ class PluginMainActivity : AppCompatActivity(), View.OnClickListener {
         findViewById<Button>(R.id.btn01).setOnClickListener(this)
         findViewById<Button>(R.id.btn02).setOnClickListener(this)
         imageView=findViewById(R.id.iv)
+        findViewById<Button>(R.id.btn03).setOnClickListener(this)
 
         hostContext= RePlugin.getHostContext()
         hostClassLoader=RePlugin.getHostClassLoader()
@@ -56,6 +58,17 @@ class PluginMainActivity : AppCompatActivity(), View.OnClickListener {
                     }
                 }
             }
+
+            R.id.btn03->{
+                jsonStrToBean()
+            }
         }
+    }
+
+    private fun jsonStrToBean(){
+        var jsonStr:String="{\"name\":\"ZhangSan\",\"age\":\"26\"}"
+        val gson = Gson()
+        val person: Person = gson.fromJson(jsonStr, Person::class.java)
+        Log.d(TAG, "##jsonStrToBean##jsonStr=${jsonStr},person=${person}")
     }
 }
