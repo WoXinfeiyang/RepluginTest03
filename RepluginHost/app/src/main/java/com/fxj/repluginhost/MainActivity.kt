@@ -109,7 +109,9 @@ class MainActivity : Activity(), View.OnClickListener {
             }
 
             R.id.btn03->{
-                if(pi!=null){
+                var pluginInfo:PluginInfo?=RePlugin.getPluginInfo(PLUGIN_NAME)
+                Log.d(TAG,"启动插件Activity按钮被点击了!要启动目标插件的插件信息pluginInfo=${pluginInfo}")
+                if(pluginInfo!=null){
                     RePlugin.startActivity(this@MainActivity, RePlugin.createIntent(
                         PLUGIN_NAME,
                         "com.fxj.Plugin.PluginMainActivity"));
